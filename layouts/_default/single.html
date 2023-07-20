@@ -11,6 +11,14 @@
             {{ end }}
             {{- end -}}
         </div>
+        <div class="mt:16 f:fade-60">
+		{{ if gt .ReadingTime 1 }}
+			{{ .Scratch.Set "timeUnit" "mins" }}
+		{{ else }}
+			{{ .Scratch.Set "timeUnit" "min" }}
+		{{ end }}
+		<time>Reading Time: ~{{ .ReadingTime }} {{ .Scratch.Get "timeUnit" }}</time>
+        </div>
     </header>
     {{- partial "prose.html" . -}}
 </article>
